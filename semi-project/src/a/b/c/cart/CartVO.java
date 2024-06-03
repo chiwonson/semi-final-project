@@ -1,4 +1,4 @@
-package a.b.c.Cart;
+package a.b.c.cart;
 
 public class CartVO {
 
