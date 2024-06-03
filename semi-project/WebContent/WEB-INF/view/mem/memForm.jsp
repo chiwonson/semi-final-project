@@ -93,9 +93,14 @@
 						$(document).on("click", "btn", function(){
 												alert("btn 버튼 블럭 진입 >>> : ");
 												console.log("btn >>> : ");
+												
+												$('#memForm').attr({
+													'action':'memInsert.t',
+													'method':'POST',
+													'enctype':'multipart/form-data'
 						}).submit();
+		});
 	});
-
 </script>
      	
 
