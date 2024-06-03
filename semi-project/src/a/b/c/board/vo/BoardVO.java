@@ -5,7 +5,7 @@ public class BoardVO {
 	private String tnum;
 	private String tname;
 	private String tpw;
-	private String tphoto
+	private String tphoto;
 	private String pname;
 	private int price;
 	private int count;

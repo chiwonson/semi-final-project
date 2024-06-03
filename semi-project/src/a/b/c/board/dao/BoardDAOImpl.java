@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import a.b.c.board.vo.BoardVO;
 
 @Repository
-public class BoardDAOImpl implemetns BoardDAO {
+public class BoardDAOImpl implements BoardDAO {
 	Logger logger = LogManager.getLogger(BoardDAOImpl.class);
 	
 	@Autowired(required=false)
@@ -23,14 +23,14 @@ public class BoardDAOImpl implemetns BoardDAO {
 		return sqlSession.insert("BoardInsert", bvo);
 	}
 	
-	@Overried
+	@Override
 	public List<BoardVO> BoardSelectAll(BoardVO bvo){
 		logger.info("BoardSelectAll 함수 진입 >>> : ");
-		return sqlSession.selectList("kosBoardSelectAll", bvo){
+		return sqlSession.selectList("kosBoardSelectAll", bvo);
 	
 	}
 		
-	@Overried
+	@Override
 	public int BoardDelete(BoardVO bvo) {
 		logger.info("BoardDelete 함수 진입 >>> : ");
 		return sqlSession.update("BoardDelete", bvo);
