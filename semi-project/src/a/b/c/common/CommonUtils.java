@@ -7,7 +7,6 @@ public class CommonUtils {
 	public static final int MEM_IMG_FILE_SIZE = 10*1024*1024; // 10MB
 	public static final String MEM_EN_CODE = "UTF-8";
 		
-		
 	// BOARD
 	public static final String BOARD_IMG_UPLOAD_PATH = "C:\\00.KOSMO142\\30.web\\el_kos_semi_work\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kosSpring\\fileupload\\board";
 	public static final int BOARD_IMG_FILE_SIZE = 10*1024*1024; // 10MB
