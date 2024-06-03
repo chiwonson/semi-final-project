@@ -4,6 +4,7 @@ public class ProductVO {
 
 	private String tnum;
 	private String pname;
+	private String pphoto;
 	private int pprice;
 	private int pcount;
 	private String ptotal;
@@ -12,13 +13,14 @@ public class ProductVO {
 		super();
 	}
 
-	public ProductVO(String tnum, String pname, int pprice, int pcount, String ptotal) {
+	public ProductVO(String tnum, String pname, String pphoto, int pprice, int pcount, String ptotal) {
 		super();
 		this.tnum = tnum;
 		this.pname = pname;
 		this.pprice = pprice;
 		this.pcount = pcount;
 		this.ptotal = ptotal;
+		this.pphoto = pphoto;
 	}
 
 	public String getTnum() {
@@ -61,4 +63,11 @@ public class ProductVO {
 		this.ptotal = ptotal;
 	}
 	
+	public String getPphoto() {
+		return pphoto;
+	}
+	
+	public void setPphoto(String pphoto) {
+		this.pphoto = pphoto;
+	}
 }
