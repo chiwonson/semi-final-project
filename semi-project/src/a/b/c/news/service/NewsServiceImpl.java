@@ -20,33 +20,33 @@ public class NewsServiceImpl implements NewsService {
 	private NewsDAO newsDAO;
 	
 	@Override
-	public int newsInsert() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int newsInsert(NewsVO nvo) {
+		logger.info("NewsServiceImpl :: newsInsert() >>> : ");
+		return newsDAO.newsInsert(nvo);
 	}
 
 	@Override
-	public List<NewsVO> newsSelectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NewsVO> newsSelectAll(NewsVO nvo) {
+		logger.info("NewsServiceImpl :: newsSelectAll() >>> : ");
+		return newsDAO.newsSelectAll(nvo);
 	}
 
 	@Override
-	public List<NewsVO> newsSelect() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NewsVO> newsSelect(NewsVO nvo) {
+		logger.info("NewsServiceImpl :: newsSelect() >>> : ");
+		return newsDAO.newsSelect(nvo);
 	}
 
 	@Override
-	public int newsUpdate() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int newsUpdate(NewsVO nvo) {
+		logger.info("NewsServiceImpl :: newsUpdate() >>> : ");
+		return newsDAO.newsUpdate(nvo);
 	}
 
 	@Override
-	public int newsDelete() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int newsDelete(NewsVO nvo) {
+		logger.info("NewsServiceImpl :: newsDelete() >>> : ");
+		return newsDAO.newsDelete(nvo);
 	}
 
 }
