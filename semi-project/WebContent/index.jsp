@@ -17,7 +17,8 @@
 <body>
 <h3>토트넘 팬 홈페이지</h3>
 <hr>
-
+<a href="mainPage.t">메인페이지</a><br>
+<p>
 <a href="loginForm.t">로그인</a><br>
 <p>
 <a href="">상품판매</a><br>

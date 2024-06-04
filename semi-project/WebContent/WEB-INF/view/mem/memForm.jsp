@@ -24,11 +24,11 @@
 	$(document).ready(function(){
 								alert("jQuert ready() 함수진입 >>> : ");
 							
-						//아이디 중복체크
+						//아이디 중복체크 Ajax 비동기 방식 시작 =====================================
 						$(document).on("click", "#midbtn", function(){
 										alert("tidbtn >>> : ");
 										
-										let idCheckURL 	= "kosIdcheck.t";
+										let idCheckURL 	= "Idcheck.t";
 										let reqType 	= "GET";
 										let dataParam 	= {mid:$("#mid").val(), };
 										
@@ -102,6 +102,27 @@
 		});
 	});
 </script>
+  
+<style type="text/css">
+
+	div{
+		margin:0 auto;
+		border:1px solid #081A4D;
+	}
+	
+	td, th {
+			padding : 5px;
+	}
+	h3{
+		text-align: center;
+	}
+	
+	table, th, td{
+				border:1px solid black;
+	}
+
+</style>  
+  
      	
 
 </head>

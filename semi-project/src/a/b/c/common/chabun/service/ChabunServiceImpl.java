@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import a.b.c.common.chabun.dao.ChabunDAO;
+import a.b.c.mem.vo.MemberVO;
 import a.b.c.news.vo.NewsVO;
 import a.b.c.product.vo.ProductVO;
 
@@ -28,6 +29,13 @@ public class ChabunServiceImpl implements ChabunService {
 	public ProductVO getProductChabun() {
 		logger.info("Service :: getProductChabun 함수 진입 >>> : ");
 		return chabunDAO.getProductChabun();
+	}
+
+	@Override
+	public MemberVO getMemberChabun() {
+		// TODO Auto-generated method stub
+		logger.info("getMemberChabun 함수진입 >>> : ");
+		return chabunDAO.getMemberChabun();
 	}
 
 }
