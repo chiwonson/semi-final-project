@@ -22,6 +22,8 @@
 <p>
 <a href="">상품판매</a><br>
 <p>
+<a href="newsSelectAll.t">뉴스</a><br>
+<p>
 <a href="">자유게시판</a><br>
 <p>
 </body>
