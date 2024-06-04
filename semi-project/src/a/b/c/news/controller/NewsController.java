@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import a.b.c.common.ChabunUtil;
+import a.b.c.common.CommonUtils;
+import a.b.c.common.FileUploadUtil;
 import a.b.c.common.chabun.service.ChabunService;
 import a.b.c.news.service.NewsService;
 import a.b.c.news.vo.NewsVO;
@@ -35,7 +37,11 @@ public class NewsController {
 		logger.info("NewsController :: newsInsert >>> : ");
 		
 		String mnum = ChabunUtil.getMemberChabun("M", chabunService.getNewsChabun().getNnum());
-		logger.info("kosMemberInsert 함수 mnum >>> : " + mnum);
+		logger.info("Controller :: newsInsert :: mnum >>> : " + mnum);
+		
+		FileUploadUtil fu = new FileUploadUtil(	 CommonUtils.MEM_IMG_UPLOAD_PATH
+                								,CommonUtils.MEM_IMG_FILE_SIZE
+                								,CommonUtils.MEM_EN_CODE);
 		
 		return "news/newsInsert";
 	}

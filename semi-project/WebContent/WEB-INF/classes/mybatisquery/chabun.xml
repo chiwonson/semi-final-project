@@ -3,10 +3,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
           
-<mapper namespace="a.b.c.chabun.dao.ChabunDAO">
+<mapper namespace="a.b.c.common.chabun.dao.ChabunDAO">
 
 <select id="getMemberChabun" resultType="membervo">
 	SELECT	/*+INDEX_DESC(A SYS_C007184)*/NVL(MAX(SUBSTR(A.TNUM, -4)),0) +1 MNUM FROM PKT_MEMBER A;				
+</select>
+
+<select id="getNewsChabun" resultType="newsvo">
+	SELECT	/*+INDEX_DESC(A SYS_C007184)*/NVL(MAX(SUBSTR(A.NNUM, -4)),0) +1 MNUM FROM NEWS A;				
+</select>
+
+<select id="getProductChabun" resultType="productvo">
+	SELECT	/*+INDEX_DESC(A SYS_C007184)*/NVL(MAX(SUBSTR(A.PNUM, -4)),0) +1 MNUM FROM PRODUCT A;				
 </select>
 
 </mapper>
