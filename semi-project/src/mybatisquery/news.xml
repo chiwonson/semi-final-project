@@ -6,55 +6,49 @@
 
 <select id="newsSelect" parameterType="newsvo" resultType="newsvo">	
 	
-		SELECT 		
-		FROM 	
+		SELECT 	*	
+		FROM 	NEWS A
 		WHERE 	A.DELETEYN = 'Y' 
-		AND     A.MNUM = #{mnum}	
-		AND     A.BNUM = #{bnum}
+		AND     A.NNUM = #{nnum}	
 		
 </select>
 
 <select id="newsSelectAll" parameterType="newsvo" resultType="newsvo">	
 	
 		SELECT 	*
-		FROM 	
+		FROM 	NEWS A
 		WHERE 	A.DELETEYN = 'Y' 
-		AND     A.MNUM = #{mnum}	
-		AND     A.BNUM = #{bnum}
 		
 </select>
 
 
 <insert id="newsInsert" parameterType="newsvo" >
  
-	INSERT INTO SPRING_BOARD_LIKE (	BLNUM, MNUM, BNUM, 									
-									DELETEYN, INSERTDATE, UPDATEDATE)
-            				VALUES(	(SELECT NVL(MAX(BLNUM), 0) + 1 AS BLNUM FROM SPRING_BOARD_LIKE), 
-	            					#{mnum}, 
-	            					#{bnum},  	            				 				
-	            					'Y', 
-	            					SYSDATE, 
-	            					SYSDATE)
+	INSERT INTO NEWS (	NNUM, NNAME, NTITLE, NCONTENT, NPHOTO,									
+							DELETEYN, INSERTDATE, UPDATEDATE)
+               VALUES(	#{nnum}, #{nname}, #{ntitle}, #{ncontent},
+	            			nphoto, 'Y', SYSDATE, SYSDATE)
 </insert>
 
 
 <update id="newsUpdate" parameterType="newsvo" >
     
-	UPDATE 	SPRING_BOARD_LIKE 
-	   SET  LIKE_CNT_1 = LIKE_CNT_1 + 1
+	UPDATE 	NEWS 
+	   SET  NCONTENT =  #{ncontent}
+	  	   ,NTITLE =  #{ntitle}
 		   ,UPDATEDATE = SYSDATE
-	 WHERE  MNUM = #{mnum}
-	 AND    BNUM = #{bnum}	 
+	WHERE  	DELETEYN    = 'Y'
+	AND  NNUM = #{nnum} 
 	 
 </update>
 
 <update id="newsDelete" parameterType="newsvo" >
     
-	UPDATE 	SPRING_BOARD_LIKE 
-	   SET  LIKE_CNT_2 = LIKE_CNT_2 + 1
+	UPDATE 	NEWS 
+	   SET  DELETEYN = 'N'
 		   ,UPDATEDATE = SYSDATE
-	 WHERE  MNUM = #{mnum}
-	 AND    BNUM = #{bnum}	 
+	WHERE  	DELETEYN    = 'Y'
+	AND  NNUM = #{nnum} 
 	 
 </update>
 

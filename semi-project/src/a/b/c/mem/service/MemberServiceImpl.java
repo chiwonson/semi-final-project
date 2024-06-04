@@ -15,15 +15,15 @@ import a.b.c.mem.vo.MemberVO;
 @Service
 @Transactional
 public class MemberServiceImpl implements MemberService{
-	private Logger logger = LogManaver.getLogger(MemberServiceImpl.class);
+	private Logger logger = LogManager.getLogger(MemberServiceImpl.class);
 
 	@Autowired(required = false)
-	private MemberDAO MemberDao;	
+	private MemberDAO memberDAO;	
 	
 	@Override
-	public int MemberInsert(MemverVO tvo) {
+	public int MemberInsert(MemberVO tvo) {
 		// TODO Auto-generated method stub
-		return  MemberDAO.MemberInsert(tvo);
+		return  memberDAO.MemberInsert(tvo);
 	}
 
 }

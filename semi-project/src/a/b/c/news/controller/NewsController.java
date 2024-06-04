@@ -9,12 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import a.b.c.common.ChabunUtil;
+import a.b.c.common.chabun.service.ChabunService;
 import a.b.c.news.service.NewsService;
 import a.b.c.news.vo.NewsVO;
 
 @Controller
 public class NewsController {
 	Logger logger = LogManager.getLogger(NewsController.class);
+	
+	@Autowired(required=false)
+	private ChabunService chabunService;
 	
 	@Autowired(required=false)
 	private NewsService newsService;
@@ -29,6 +34,8 @@ public class NewsController {
 	public String newsInsert(HttpServletRequest req) {
 		logger.info("NewsController :: newsInsert >>> : ");
 		
+		String mnum = ChabunUtil.getMemberChabun("M", chabunService.getNewsChabun().getNnum());
+		logger.info("kosMemberInsert 함수 mnum >>> : " + mnum);
 		
 		return "news/newsInsert";
 	}

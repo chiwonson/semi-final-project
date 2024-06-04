@@ -5,5 +5,5 @@ import a.b.c.mem.vo.MemberVO;
 
 public interface MemberService {
 
-			int MemberInsert(MemverVO tvo);
+			int MemberInsert(MemberVO tvo);
 }
