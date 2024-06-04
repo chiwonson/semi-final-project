@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,14 @@ import a.b.c.mem.vo.MemberVO;
 public class MemberController {
 	Logger logger = LogManager.getLogger(MemberController.class);
 
+	//필드 오토 와이어드
+	@Autowired(required=false)
+	private ChabunService chabunService;
+	
+	// 필드 오토 와이어드
+	@Autowired(required=false)
+	private MemberService MemberService;
+	
 	//회원입력폼
 	@GetMapping("memForm")
 	public String kosMemberInsertForm() {
