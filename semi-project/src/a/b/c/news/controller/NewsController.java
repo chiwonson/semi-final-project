@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import a.b.c.news.service.NewsService;
 import a.b.c.news.vo.NewsVO;
@@ -18,33 +19,49 @@ public class NewsController {
 	@Autowired(required=false)
 	private NewsService newsService;
 	
+	@GetMapping("newsInsertForm")
 	public String newsInsertForm() {
-		
-		return "";
+		logger.info("NewsController :: newsInsertForm >>> : ");
+		return "news/newsInsertForm";
 	}
 	
+	@GetMapping("newsInsert")
 	public String newsInsert(HttpServletRequest req) {
+		logger.info("NewsController :: newsInsert >>> : ");
 		
-		return "";
+		
+		return "news/newsInsert";
 	}
 	
+	@GetMapping("newsSelectAll")
 	public String newsSelectAll(NewsVO nvo, Model model) {
+		logger.info("NewsController :: newsSelectAll >>> : ");
 		
-		return "";
+		
+		return "news/newsSelectAll";
 	}
 	
+	@GetMapping("newsSelect")
 	public String newsSelect(NewsVO nvo, Model model) {
+		logger.info("NewsController :: newsSelect >>> : ");
 		
-		return "";
+		
+		return "news/newsSelect";
 	}
 
+	@GetMapping("newsUpdate")
 	public String newsUpdate(NewsVO nvo) {
-	
-		return "";
+		logger.info("NewsController :: newsUpdate >>> : ");
+		
+		
+		return "news/newsUpdate";
 	}
 	
+	@GetMapping("newsDelete")
 	public String newsDelete(NewsVO nvo) {
+		logger.info("NewsController :: newsDelete >>> : ");
 		
-		return "";
+		
+		return "news/newsDelete";
 	}
 }
