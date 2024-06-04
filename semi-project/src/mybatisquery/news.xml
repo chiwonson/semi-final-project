@@ -27,7 +27,7 @@
 	INSERT INTO NEWS (	NNUM, NNAME, NTITLE, NCONTENT, NPHOTO,									
 							DELETEYN, INSERTDATE, UPDATEDATE)
                VALUES(	#{nnum}, #{nname}, #{ntitle}, #{ncontent},
-	            			nphoto, 'Y', SYSDATE, SYSDATE)
+	            			#{nphoto}, 'Y', SYSDATE, SYSDATE)
 </insert>
 
 

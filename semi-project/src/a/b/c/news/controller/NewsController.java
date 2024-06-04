@@ -41,9 +41,9 @@ public class NewsController {
 		String nnum = ChabunUtil.getMemberChabun("M", chabunService.getNewsChabun().getNnum());
 		logger.info("Controller :: newsInsert :: nnum >>> : " + nnum);
 		
-		FileUploadUtil fu = new FileUploadUtil(	 CommonUtils.MEM_IMG_UPLOAD_PATH
-                								,CommonUtils.MEM_IMG_FILE_SIZE
-                								,CommonUtils.MEM_EN_CODE);
+		FileUploadUtil fu = new FileUploadUtil(	 CommonUtils.NEWS_IMG_UPLOAD_PATH
+                								,CommonUtils.NEWS_IMG_FILE_SIZE
+                								,CommonUtils.NEWS_EN_CODE);
 		boolean bool = fu.imgfileUpload(req);
 		logger.info("kosMemberInsert bool >>> : " + bool);
 		
