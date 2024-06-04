@@ -1,5 +1,7 @@
 package a.b.c.news.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.LogManager;
@@ -36,45 +38,83 @@ public class NewsController {
 	public String newsInsert(HttpServletRequest req) {
 		logger.info("NewsController :: newsInsert >>> : ");
 		
-		String mnum = ChabunUtil.getMemberChabun("M", chabunService.getNewsChabun().getNnum());
-		logger.info("Controller :: newsInsert :: mnum >>> : " + mnum);
+		String nnum = ChabunUtil.getMemberChabun("M", chabunService.getNewsChabun().getNnum());
+		logger.info("Controller :: newsInsert :: nnum >>> : " + nnum);
 		
 		FileUploadUtil fu = new FileUploadUtil(	 CommonUtils.MEM_IMG_UPLOAD_PATH
                 								,CommonUtils.MEM_IMG_FILE_SIZE
                 								,CommonUtils.MEM_EN_CODE);
+		boolean bool = fu.imgfileUpload(req);
+		logger.info("kosMemberInsert bool >>> : " + bool);
 		
-		return "news/newsInsert";
+		NewsVO nvo = new NewsVO();
+		nvo.setNnum(nnum);
+		nvo.setNname(fu.getParameter("nname"));
+		nvo.setNtitle(fu.getParameter("ntitle"));
+		nvo.setNphoto(fu.getFileName("nphoto"));
+		nvo.setNcontent(fu.getParameter("ncontent"));
+		
+		int nCnt = newsService.newsInsert(nvo);
+		if (nCnt > 0) {
+			logger.info("Controller :: newsInsert :: nCnt >>> : " + nCnt);
+			return "news/newsInsert";
+		}
+			
+		return "news/newsInsertForm";
 	}
 	
 	@GetMapping("newsSelectAll")
 	public String newsSelectAll(NewsVO nvo, Model model) {
 		logger.info("NewsController :: newsSelectAll >>> : ");
 		
+		List<NewsVO> listAll = newsService.newsSelectAll(nvo);
+		if (listAll.size() > 0) {
+			logger.info("listAll.size >>> : " + listAll);
+			model.addAttribute("listAll", listAll);
+			
+			model.addAttribute("search_nvo", nvo);
+			return "news/newsSelectAll";
+		}
 		
-		return "news/newsSelectAll";
+		return "news/newsInsertForm";
 	}
 	
 	@GetMapping("newsSelect")
 	public String newsSelect(NewsVO nvo, Model model) {
-		logger.info("NewsController :: newsSelect >>> : ");
+		logger.info("NewsController :: newsSelect >>> : " + nvo.getNnum());
 		
+		List<NewsVO> listS = newsService.newsSelect(nvo);
+		if (listS.size() > 0) {
+			logger.info("listAll.size >>> : " + listS);
+			model.addAttribute("listS", listS);
+			
+			return "news/newsSelect";
+		}
 		
 		return "news/newsSelect";
 	}
 
 	@GetMapping("newsUpdate")
 	public String newsUpdate(NewsVO nvo) {
-		logger.info("NewsController :: newsUpdate >>> : ");
+		logger.info("NewsController :: newsUpdate >>> : " + nvo.getNnum());
 		
-		
-		return "news/newsUpdate";
+		int nCnt = newsService.newsUpdate(nvo);
+		if (nCnt > 0) {
+			logger.info("Controller :: newsUpdate :: nCnt >>> : " + nCnt);
+			return "news/newsUpdate";
+		}		
+		return "#";
 	}
 	
 	@GetMapping("newsDelete")
 	public String newsDelete(NewsVO nvo) {
-		logger.info("NewsController :: newsDelete >>> : ");
+		logger.info("NewsController :: newsDelete >>> : " + nvo.getNnum());
 		
-		
-		return "news/newsDelete";
+		int nCnt = newsService.newsDelete(nvo);
+		if (nCnt > 0) {
+			logger.info("Controller :: newsDelete :: nCnt >>> : " + nCnt);
+			return "news/newsDelete";
+		}
+		return "#";
 	}
 }
