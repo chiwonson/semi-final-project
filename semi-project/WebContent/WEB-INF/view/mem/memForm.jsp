@@ -20,13 +20,13 @@
 <script src="/kosSpring/js/validation.js"></script>
 
 <script type="text/javascript">
-//아이디 중복체크
 	alert("자바스크립트 블럭 진입 >>> : ");
 	$(document).ready(function(){
-								alert(" 함수진입 >>> : ");
-								
+								alert("jQuert ready() 함수진입 >>> : ");
+							
+						//아이디 중복체크
 						$(document).on("click", "#midbtn", function(){
-										alert("btn >>> : ");
+										alert("tidbtn >>> : ");
 										
 										let idCheckURL 	= "kosIdcheck.t";
 										let reqType 	= "GET";
