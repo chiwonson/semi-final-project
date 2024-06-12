@@ -6,9 +6,9 @@ import a.b.c.product.vo.ProductVO;
 
 public interface ProductService {
 
-	public List<ProductVO> productSelectAll();
-	public List<ProductVO> productSelect();
-	public int productInsert();
-	public int productUpdate();
-	public int productDelete();
+	public List<ProductVO> productSelectAll(ProductVO pvo);
+	public List<ProductVO> productSelect(ProductVO pvo);
+	public int productInsert(ProductVO pvo);
+	public int productUpdate(ProductVO pvo);
+	public int productDelete(ProductVO pvo);
 }

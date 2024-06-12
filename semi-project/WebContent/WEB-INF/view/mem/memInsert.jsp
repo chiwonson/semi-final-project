@@ -10,9 +10,7 @@
 <h3>memInsert.jsp</h3>
 <hr>
 <script>
-	//location.hrdf="/semi-project/memSelectAll.t";
-	location.hrdf="/semi-project/loginForm.t";
-
+	location.href="/semi-project/index.jsp";
 </script>
 </body>
 </html>

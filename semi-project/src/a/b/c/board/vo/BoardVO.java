@@ -2,108 +2,74 @@ package a.b.c.board.vo;
 
 public class BoardVO {
 	
-	private String tnum;
-	private String tname;
-	private String tpw;
-	private String tphoto;
-	private String pname;
-	private int price;
-	private int count;
-	private String total;
-	private String tcontent;
+	private String bnum;
+	private String bsubject;
+	private String bname;
+	private String bpw;
+
+	private String bfile;
+	private String bcontent;
 	private String insertdate;
-	private String detail;
+	private String deleteyn;
+	private String updatedate;
+	
+	private String pageSize;
+	private String groupSize;
+	private String curPage;
+	private String totalCount;
+	
+	private int bhit;
 	
 	public BoardVO() {
 		
 	}
-	
-	public BoardVO(String tnum, String tname, String tpw, String pname, int price, int count, String total, String tcontent, String insertdate, String detail) {
-		
-		this.tnum = tnum;
-		this.tname = tname;
-		this.tpw = tpw;
-		this.tphoto = tphoto;
-		this.pname = pname;
-		this.price = price;
-		this.count = count;
-		this.tcontent = tcontent;
-		this.insertdate = insertdate;
-		this.detail = detail;
-		
 
+	public String getBnum() {
+		return bnum;
 	}
 
-	public String getTnum() {
-		return tnum;
+	public void setBnum(String bnum) {
+		this.bnum = bnum;
 	}
 
-	public void setTnum(String tnum) {
-		this.tnum = tnum;
+	public String getBsubject() {
+		return bsubject;
 	}
 
-	public String getTname() {
-		return tname;
+	public void setBsubject(String bsubject) {
+		this.bsubject = bsubject;
 	}
 
-	public void setTname(String tname) {
-		this.tname = tname;
+	public String getBname() {
+		return bname;
 	}
 
-	public String getTpw() {
-		return tpw;
+	public void setBname(String bname) {
+		this.bname = bname;
 	}
 
-	public void setTpw(String tpw) {
-		this.tpw = tpw;
+	public String getBpw() {
+		return bpw;
 	}
 
-	public String getTphoto() {
-		return tphoto;
+	public void setBpw(String bpw) {
+		this.bpw = bpw;
 	}
 
-	public void setTphoto(String tphoto) {
-		this.tphoto = tphoto;
+	public String getBfile() {
+		return bfile;
 	}
 
-	public String getPname() {
-		return pname;
+	public void setBfile(String bfile) {
+		this.bfile = bfile;
 	}
 
-	public void setPname(String pname) {
-		this.pname = pname;
+	public String getBcontent() {
+		return bcontent;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public String getTotal() {
-		return total;
-	}
-
-	public void setTotal(String total) {
-		this.total = total;
-	}
-
-	public String getTcontent() {
-		return tcontent;
-	}
-
-	public void setTcontent(String tcontent) {
-		this.tcontent = tcontent;
+	public void setBcontent(String bcontent) {
+		this.bcontent = bcontent;
 	}
 
 	public String getInsertdate() {
@@ -114,12 +80,61 @@ public class BoardVO {
 		this.insertdate = insertdate;
 	}
 
-	public String getDetail() {
-		return detail;
+	public String getDeleteyn() {
+		return deleteyn;
 	}
 
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setDeleteyn(String deleteyn) {
+		this.deleteyn = deleteyn;
+	}
+
+	public String getUpdatedate() {
+		return updatedate;
+	}
+
+	public void setUpdatedate(String updatedate) {
+		this.updatedate = updatedate;
+	}
+
+	public String getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(String pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getGroupSize() {
+		return groupSize;
+	}
+
+	public void setGroupSize(String groupSize) {
+		this.groupSize = groupSize;
+	}
+
+	public String getCurPage() {
+		return curPage;
+	}
+
+	public void setCurPage(String curPage) {
+		this.curPage = curPage;
+	}
+
+	public String getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(String totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public int getBhit() {
+		return bhit;
+	}
+
+	public void setBhit(int bhit) {
+		this.bhit = bhit;
 	}
 	
+
 }

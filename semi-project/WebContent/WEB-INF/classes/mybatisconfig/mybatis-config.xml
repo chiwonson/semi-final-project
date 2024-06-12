@@ -7,5 +7,7 @@
 		<typeAlias type="a.b.c.mem.vo.MemberVO" alias="membervo"/>
 		<typeAlias type="a.b.c.product.vo.ProductVO" alias="productvo"/>
 		<typeAlias type="a.b.c.news.vo.NewsVO" alias="newsvo"/>	
+		<typeAlias type="a.b.c.order.vo.OrderVO" alias="ordervo"/>		
+		<typeAlias type="a.b.c.board.vo.BoardVO" alias="boardvo"/>
 	</typeAliases>
 </configuration>

@@ -4,16 +4,70 @@
           
 <mapper namespace="a.b.c.mem.dao.MemberDAO">
 
-<insert id="MemberInsert" parameterType="membervo">
-	
-	INSERT INTO PKT_MEMBER(	TNUM, TNAME, TID, TPW, TPHOTO )
-	
-	VALUES(#{tnum, 		jdbcType=VARCHAR},
-		   #{tname, 	jdbcType=VARCHAR},
-		   #{tid, 		jdbcType=VARCHAR},
-		   #{tpw,		jdbcType=VARCHAR},
-		   #{tphoto,	jdbcType=VARCHAR}
-	)
+<insert id="memberInsert" parameterType="membervo">
+    INSERT INTO PKT_MEMBER(TNUM, TNAME, TID, TPW, TPHOTO, TGENDER, TEMAIL, THOBBY, TBIRTH)
+    VALUES (#{tnum, 	jdbcType=VARCHAR},
+            #{tname, 	jdbcType=VARCHAR},
+            #{tid, 		jdbcType=VARCHAR},
+            #{tpw,		jdbcType=VARCHAR},
+            #{tphoto, 	jdbcType=VARCHAR},  
+            #{tgender, 	jdbcType=VARCHAR},
+            #{temail, 	jdbcType=VARCHAR},
+            #{thobby, 	jdbcType=VARCHAR},
+            #{tbirth, 	jdbcType=VARCHAR}) 
+             
+                     
+            
 </insert>
+
+<select id="idCheck" parameterType="membervo" resultType="membervo">	
+    SELECT A.MID AS MID
+    FROM PKT_MEMBER A
+    WHERE A.DELETEYN = 'Y'
+    AND A.TID = #{tid} 
+</select>
+
+<select id="memberSelectAll" parameterType="membervo" resultType="membervo">
+	SELECT
+			 A.TNUM			TNUM
+			,A.TNAME		TNAME
+			,A.TID			TID
+			,A.TPW			TPW
+			,A.TGENDER		TGENDER
+			,A.TBIRTH		TBIRTH
+			,A.TEMAIL		TEMAIL
+			,A.THOBBY		THOBBY
+	FROM PKT_MEMBER A
+	<if test="searchFilter=='key2'">
+		<![CDATA[AND A.TNUM LIKE '%'||#{keyword, jdbcType=VARCHAR}||'%']]>
+	</if>	
+	
+	<if test="searchFilter=='key3'">
+		<![CDATA[AND A.TNAME LIKE '%'||#{keyword, jdbcType=VARCHAR}||'%']]>
+	</if>
+	
+	<if test="searchFilter=='key4'">
+		<![CDATA[AND A.TID LIKE '%'||#{keyword, jdbcType=VARCHAR}||'%']]>
+	</if>
+	ORDER BY 1
+</select>
+
+<select id="memberSelect" parameterType="membervo" resultType="membervo">
+	SELECT
+			 A.TNUM			TNUM
+			,A.TNAME		TNAME
+			,A.TID			TID
+			,A.TPW			TPW
+			,A.TGENDER		TGENDER
+			,A.TBIRTH		TBIRTH
+			,A.TEMAIL		TEMAIL
+			,A.THOBBY		THOBBY
+	FROM PKT_MEMBER A
+	AND A.TNUM = #{tnum}
+</select>
+
+
+
+
 
 </mapper>

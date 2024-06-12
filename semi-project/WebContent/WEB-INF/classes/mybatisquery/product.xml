@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.product.dao.ProductDAO">
+
+<insert id="productInsert" parameterType="productvo">
+	
+	INSERT INTO PRODUCT   ( PNUM, PNAME, PPHOTO, PPRICE, PCNT, DELETEYN, INSERTDATE, UPDATEDATE)
+	
+				VALUES	  (#{pnum, 		jdbcType=VARCHAR},
+						   #{pname, 	jdbcType=VARCHAR},
+						   #{pphoto, 		jdbcType=VARCHAR},
+						   #{pprice,		jdbcType=VARCHAR},
+						   #{pcnt,	jdbcType=VARCHAR},
+						   				'Y', SYSDATE, SYSDATE)
+</insert>
+
+<select id="productSelect" parameterType="productvo" resultType="productvo">	
+	
+		SELECT 	*	FROM
+		 	PRODUCT A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.PNUM = #{pnum}	
+		
+</select>
+
+<select id="productSelectAll" parameterType="productvo" resultType="productvo">	
+	
+	SELECT * FROM (
+		SELECT 	A.PNUM 		PNUM
+		       ,A.PNAME 	PNAME
+		       ,A.PPHOTO 	PPHOTO
+		       ,A.PPRICE 	PPRICE
+		       ,A.PCNT 		PCNT
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE	 
+		        <!--  ? : 페이지 사이즈 : pageSize  -->
+		       ,CEIL(ROW_NUMBER() OVER(ORDER BY A.PNUM)/ #{pageSize} ) pageSize		
+			   ,COUNT(A.PNUM) OVER() AS totalCount 
+		FROM 	PRODUCT A
+		WHERE 	A.DELETEYN = 'Y' 	
+		ORDER BY 1 DESC  
+		<!--  ? : 현재 페이지 : curPage -->
+	) WHERE pageSize = #{curPage}
+		
+</select>
+
+</mapper>

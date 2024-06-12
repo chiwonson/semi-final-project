@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h3>newsInsert.jsp</h3>
+<script>
+	location.href="/semi-project/newsSelectAll.t";
+</script>
 </body>
 </html>

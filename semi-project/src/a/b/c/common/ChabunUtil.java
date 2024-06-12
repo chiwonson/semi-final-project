@@ -7,13 +7,15 @@ public abstract class ChabunUtil {
 	static Logger logger = LogManager.getLogger(ChabunUtil.class);
 	
 	
-	public static final String BIZ_GUBUN_M 	= "M"; // 회원
+	public static final String BIZ_GUBUN_T 	= "T"; // 회원
 	public static final String BIZ_GUBUN_B 	= "B"; // 게시판
 	public static final String BIZ_GUBUN_RB = "RB"; // 게시판 댓글
 	
 	public static final String BIZ_GUBUN_P 	= "P"; // 상품
 	public static final String BIZ_GUBUN_C 	= "C"; // 카트
 	public static final String BIZ_GUBUN_O 	= "O"; // 주문
+	
+	
 	
 	
 	// type : D : YYYYMMDD, M : YYYYMM, Y : YYYY, N : 
@@ -31,7 +33,7 @@ public abstract class ChabunUtil {
 	public static String getMemberChabun(String type, String num) {	
 		logger.info("getMemberChabun >>> : " + type + " : " + num);
 		
-		return BIZ_GUBUN_M.concat(ChabunUtil.numPad(type, num));
+		return BIZ_GUBUN_T.concat(ChabunUtil.numPad(type, num));
 	}
 	
 	public static String getBoardChabun(String type, String num) {

@@ -26,10 +26,38 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> BoardSelectAll(BoardVO bvo){
 		logger.info("BoardSelectAll 함수 진입 >>> : ");
-		return sqlSession.selectList("kosBoardSelectAll", bvo);
+		
+		return sqlSession.selectList("BoardSelectAll", bvo);
 	
 	}
+	@Override
+	public List<BoardVO> BoardSelect(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardSelect 함수 진입 >>> : ");	
 		
+		return sqlSession.selectList("BoardSelect", bvo);
+	}
+	
+	@Override
+	public List<BoardVO> BoardPwCheck(BoardVO bvo){
+		logger.info("BoardPwCheck 함수 진입 >>> : ");
+		
+		return sqlSession.selectList("BoardPwCheck",bvo);
+	}
+	
+	@Override
+	public int BoardBhit(BoardVO bvo) {
+		logger.info("BoardHit 함수 진입 >>> : ");
+		return sqlSession.update("BoardBhit", bvo);
+	}
+	@Override
+	public int BoardUpdate(BoardVO bvo) {
+		logger.info("BoardUpdate 함수 진입 >>> : ");
+		
+		return sqlSession.update("BoardUpdate", bvo);
+	}
+	
+	
 	@Override
 	public int BoardDelete(BoardVO bvo) {
 		logger.info("BoardDelete 함수 진입 >>> : ");

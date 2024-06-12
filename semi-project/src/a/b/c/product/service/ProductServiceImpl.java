@@ -20,31 +20,31 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
-	public List<ProductVO> productSelectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductVO> productSelectAll(ProductVO pvo) {
+		logger.info("ProductServiceImpl :: productSelectAll >>> : ");			
+		return productDAO.productSelectAll(pvo);
 	}
 
 	@Override
-	public List<ProductVO> productSelect() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductVO> productSelect(ProductVO pvo) {
+		logger.info("ProductServiceImpl :: productSelect >>> : ");			
+		return productDAO.productSelect(pvo);
 	}
 
 	@Override
-	public int productInsert() {
+	public int productInsert(ProductVO pvo) {
+		logger.info("ProductServiceImpl :: productInsert >>> : ");			
+		return productDAO.productInsert(pvo);
+	}
+
+	@Override
+	public int productUpdate(ProductVO pvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int productUpdate() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int productDelete() {
+	public int productDelete(ProductVO pvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

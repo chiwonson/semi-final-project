@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+<mapper namespace="a.b.c.order.dao.OrderDAO">
+
+<insert id="orderInsert" parameterType="ordervo">
+	
+	INSERT INTO ITEM_ORDER   ( PNUM, PNAME, PPHOTO, HCNT, PPRICE, HTOTAL, INSERTDATE, DELETEYN)
+	
+				VALUES	  (#{pnum, 		jdbcType=VARCHAR},
+						   #{pname, 	jdbcType=VARCHAR},
+						   #{pphoto, 	jdbcType=VARCHAR},
+						   #{hcnt,		jdbcType=VARCHAR},
+						   #{pprice,	jdbcType=VARCHAR},
+						   #{htotal,	jdbcType=VARCHAR}, SYSDATE, 'Y')
+						   
+</insert>
+
+<select id="orderSelectAll" resultType="ordervo">
+	SELECT * FROM ITEM_ORDER WHERE DELETEYN = 'Y'
+</select>
+
+<update id="orderDelete" parameterType="ordervo" >
+
+	UPDATE ITEM_ORDER
+   		SET	 DELETEYN 	= 'N'
+	WHERE  	DELETEYN = 'Y'
+</update>
+</mapper>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>클릭한 위치에 마커 표시하기</title>
+    
+</head>
+<body>
+<div id="map" style="width:500px;height:300px;margin:auto;"></div>
+<p><em>지도를 클릭해주세요!</em></p>
+<div id="clickLating"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7ba50d45d025f6f02a5ac1b2483828c8"></script>
+<script>
+var mapContainer = document.getElementById('map'),
+	mapOption = {
+		center: new kakao.maps.LatLng(37.478853, 126.879367),
+		level: 3
+	};
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+var marker = new kakao.maps.Marker({
+	position: map.getCenter()
+});
+
+marker.setMap(map);
+
+kakao.maps.envent.addListener(map, 'click', function(mouseEvent){
+	
+	var latlng = mouseEvenet.latLng;
+	
+	marker.setPosition(latlng);
+	
+	var message = '클릭한 위치의 위도는' + latlng.getLat() + ' 이고, ';
+	message += '경도는 ' + latlng.getLng() + ' 입니다';
+	
+	var resultDiv = document.getElementById('clickLatlng');
+	resultDiv.innerHTML = message;
+});
+
+</script>
+</body>
+</html>

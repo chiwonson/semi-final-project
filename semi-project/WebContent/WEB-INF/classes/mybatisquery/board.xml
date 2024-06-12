@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="a.b.c.board.dao.BoardDAO">
+
+<insert id="BoardInsert" parameterType="boardvo">
+
+	INSERT INTO SPRING_BOARD (	bNUM, bSUBJECT, bNAME, 
+								bCONTENT, bFILE, bPW,
+								DELETEYN, INSERTDATE, UPDATEDATE)
+            			VALUES( #{bnum}, 
+            					#{bsubject}, 
+            					#{bname}, 
+            					#{bcontent}, 
+            					#{bfile}, 
+            					#{bpw},             					
+            					'Y', 
+            					SYSDATE, 
+            					SYSDATE)
+
+</insert>
+
+<select id="BoardSelectAll" parameterType="boardvo" resultType="boardvo">	
+	SELECT * FROM (
+		SELECT 	A.BNUM 		BNUM
+		       ,A.BSUBJECT 	BSUBJECT
+		       ,A.BNAME 	BNAME
+		       ,A.BCONTENT 	BCONTENT
+		       ,A.BFILE 	BFILE
+		       ,A.BPW 		BPW		   
+		       ,A.DELETEYN 	DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE
+		       ,A.BHIT      BHIT	 	
+		       <!--  ? : 페이지 사이즈 : pageSize  -->
+		       ,CEIL(ROW_NUMBER() OVER(ORDER BY A.BNUM)/ #{pageSize} ) pageSize		
+			   ,COUNT(A.BNUM) OVER() AS totalCount 	      
+		FROM 	SPRING_BOARD A
+		WHERE 	A.DELETEYN = 'Y' 	
+		ORDER BY 1 DESC  
+	    <!--  ? : 현재 페이지 : curPage -->
+	) WHERE pageSize = #{curPage}
+		
+	
+</select>
+
+<select id="BoardSelect" parameterType="boardvo" resultType="boardvo">	
+
+		SELECT 	A.BNUM 			BNUM
+		       ,A.BSUBJECT 		BSUBJECT
+		       ,A.BNAME 		BNAME
+		       ,A.BCONTENT 		BCONTENT
+		       ,A.BFILE 		BFILE
+		       ,A.BPW 			BPW		   
+		       ,A.DELETEYN 		DELETEYN
+		       ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') INSERTDATE
+		       ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD') UPDATEDATE
+		       ,A.BHIT      	BHIT 	
+		       ,B.BLNUM 		BLNUM
+		       ,B.LIKE_CNT_1	LIKE_CNT_1
+		       ,B.LIKE_CNT_2	LIKE_CNT_2      
+		<!-- 
+			FROM 	SPRING_BOARD A
+			FULL OUTER JOIN SPRING_BOARD_LIKE B
+			ON   A.BNUM = B.BNUM
+			WHERE 	A.DELETEYN = 'Y' 
+			AND     A.BNUM = #{bnum}	
+		 -->       
+		FROM 	SPRING_BOARD A, SPRING_BOARD_LIKE B		
+		WHERE 	A.BNUM = B.BNUM(+)
+		AND     A.DELETEYN = 'Y' 
+		AND     A.BNUM = #{bnum}	
+
+</select>
+
+<select id="BoardPwCheck" parameterType="boardvo" resultType="boardvo">	
+	
+		SELECT 	A.BNUM 		BNUM		    
+		       ,A.BPW 		BPW		   		     
+		FROM 	SPRING_BOARD A
+		WHERE 	A.DELETEYN = 'Y' 
+		AND     A.BNUM = #{bnum}	
+		AND     A.BPW = #{bpw}
+		
+</select>
+
+
+<update id="BoardBhit" parameterType="boardvo" >
+ 
+	UPDATE  SPRING_BOARD 
+		SET BHIT = (SELECT NVL(MAX(BHIT), 0) + 1 FROM SPRING_BOARD WHERE DELETEYN = 'Y' AND BNUM = #{bnum})
+		   <!--,UPDATEDATE = SYSDATE  -->
+	WHERE   DELETEYN = 'Y'
+	AND     BNUM = #{bnum}		   
+</update>
+
+
+<update id="BoardUpdate" parameterType="boardvo" >
+
+	UPDATE  SPRING_BOARD
+   	   SET	BCONTENT    = #{bcontent}
+	  	   ,UPDATEDATE 	= SYSDATE
+	WHERE   DELETEYN = 'Y'
+	AND     BNUM = #{bnum}	
+</update>
+<update id="BoardDelete" parameterType="boardvo" >
+
+	UPDATE  SPRING_BOARD
+   	   SET	DELETEYN 	= 'N'
+      	   ,UPDATEDATE  = SYSDATE
+	WHERE  	DELETEYN    = 'Y'
+	AND    	BNUM = #{bnum}	
+</update>
+
+</mapper>

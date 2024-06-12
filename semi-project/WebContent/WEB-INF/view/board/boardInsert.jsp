@@ -10,7 +10,7 @@
 <h3>boardInsert.jsp</h3>
 <hr>
 <script>
-	location.href="/kosSpring/boardSelectAll.t";
+	location.href="/semi-project/boardSelectAll.t";
 </script>
 </body>
 </html>
